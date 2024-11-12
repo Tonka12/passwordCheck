@@ -1,3 +1,4 @@
+https://tonka12.github.io/passwordCheck/
 Password Strength Checker
 
 Criteria

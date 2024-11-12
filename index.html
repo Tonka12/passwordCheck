@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Password Strength Checker</title>
+</head>
+<body>
+	<div class="container">
+		<h2>Password Strength Checker</h2>
+		<form>
+			<label for="password">Enter your password:</label>
+			<input type="password" id="password" name="password">
+			<button type="button" id="checkButton">Check Password Strength</button>
+		</form>
+		<div class="result" id="result"></div>
+	</div>
+    
+    <script>
+        const passwordInput = document.getElementById("password");
+        const resultDiv = document.getElementById("result");
+        const checkButton = document.getElementById("checkButton");
+
+        const commonPasswords = ['admin000', 'adminadmin', 'administrator', 'qwerty', '12345', '00000000'];
+
+        checkButton.addEventListener('click', checkPasswordStrength);
+
+        function checkPasswordStrength() {
+            const password = passwordInput.value.trim();
+
+            //Reset the input field
+            passwordInput.value = '';
+
+            //Chec if input field is empty
+            if (!password) {
+                resultDiv.innerHTML = 'Password field cannot be empty';
+                return;
+            }
+
+            //Check if length is smaller than 8
+            if (password.length < 8) {
+                resultDiv.innerHTML = "Password is too short. It should be at least 8 characters long";
+                return;
+            }
+
+            //Check if any common password is used
+            if (commonPasswords.includes(password)) {
+                resultDiv.innerHTML = 'Password is too common. It should not contain common words or phrases';
+                return;
+            }
+
+            const score = calculatePasswordScore(password);
+            resultDiv.innerHTML = 'Password strength: ' + getPasswordStrength(score) + '<br>Score: ' + score + '/5';
+        }
+
+        function calculatePasswordScore(password) {
+            let score = 0;
+            if (password.length > 12) score += 1; //length check
+            if (/[a-z]/.test(password)) score += 1; //lowercase check
+            if (/[A-Z]/.test(password)) score += 1; //uppercase check
+            if (/\d/.test(password)) score += 1; //digit check
+            if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) score += 1; // special char check
+            return score;
+        }
+
+        function getPasswordStrength(score) {
+            if (score >= 4) return "Strong";
+            else if (score >= 2) return "Medium";
+            else return "Weak";
+        }
+     </script>
+</body>
+</html>

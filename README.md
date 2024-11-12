@@ -8,7 +8,6 @@ Criteria
 - +1 if it includes special characters like "!,@,#,$,%" etc.
 
 Strength level
-Returns value of:
 - "Strong" if it has score of 4 or 5
 - "Medium" if it has score of 2 or 3
 - "Weak" if it has score of 0 or 1

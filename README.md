@@ -1,11 +1,11 @@
 Password Strength Checker
 
 Criteria
-+1 if password length is greater than 12
-+1 if it contains lowercase letters
-+1 if it contains uppercase letters
-+1 if it contains digits
-+1 if it includes special characters like "!,@,#,$,%" etc.
+- +1 if password length is greater than 12
+- +1 if it contains lowercase letters
+- +1 if it contains uppercase letters
+- +1 if it contains digits
+- +1 if it includes special characters like "!,@,#,$,%" etc.
 
 Strength level
 Returns value of:
